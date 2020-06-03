@@ -31,7 +31,7 @@ func TestLoader(t *testing.T) {
 	if len(c.Fields) != 2 {
 		t.Error(c.Fields)
 	}
-	if len(c.Methods) != 8 {
+	if len(c.Methods) != 10 {
 		t.Error(c.Methods)
 	}
 }
@@ -41,6 +41,24 @@ func TestAdd(t *testing.T) {
 	if res, err := vm.Call("FieldsAndMethods", "add", int32(2), int32(3)); err != nil {
 		t.Error(err)
 	} else if n, ok := res.(int32); !ok || n != int32(5) {
+		t.Error(res)
+	}
+}
+
+func TestMul(t *testing.T) {
+	vm := New("testdata")
+	if res, err := vm.Call("FieldsAndMethods", "mul", int32(2), int32(3)); err != nil {
+		t.Error(err)
+	} else if n, ok := res.(int32); !ok || n != int32(6) {
+		t.Error(res)
+	}
+}
+
+func TestSub(t *testing.T) {
+	vm := New("testdata")
+	if res, err := vm.Call("FieldsAndMethods", "sub", int32(2), int32(3)); err != nil {
+		t.Error(err)
+	} else if n, ok := res.(int32); !ok || n != int32(-1) {
 		t.Error(res)
 	}
 }

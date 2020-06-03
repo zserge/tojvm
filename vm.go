@@ -328,7 +328,13 @@ func (vm *VM) exec(frame Frame) (Value, error) {
 			a, b := frame.pop().(float64), frame.pop().(float64)
 			frame.push(b - a)
 		case 0x68: // IMUL
+			frame.push(frame.pop().(int32) * frame.pop().(int32))
+		case 0x69: // LMUL
+			frame.push(frame.pop().(int64) * frame.pop().(int64))
+		case 0x6A: // FMUL
+			frame.push(frame.pop().(float32) * frame.pop().(float32))
 		case 0x6B: // DMUL
+			frame.push(frame.pop().(float64) * frame.pop().(float64))
 		case 0x6F: // DDIV
 		case 0x70: // IREM
 		case 0x84: // IINC
