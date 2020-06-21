@@ -218,7 +218,7 @@ func (vm *VM) exec(frame Frame) (Value, error) {
 		case 0x08: // ICONST_5
 			frame.push(int32(5))
 		case 0x09: // LCONST_0
-			frame.push(int64(5))
+			frame.push(int64(0))
 		case 0x0A: // LCONST_1
 			frame.push(int64(1))
 		case 0x0B: // FCONST_0
